@@ -1,15 +1,11 @@
 public static class Leap
 {
-    public static bool IsLeapYear(int year)
-    {
-        switch (year)
+    public static bool IsLeapYear(int year) =>
+        year switch
         {
-            case var _ when year % 100 == 0 && year % 400 != 0:
-                return false;
-            case var _ when year % 4 == 0:
-                return true;
-            default:
-                return false;
-        }
-    }
+            var _ when year % 400 == 0 => true,
+            var _ when year % 100 == 0 => false,
+            var _ when year % 4 == 0 => true,
+            _ => false,
+        };
 }
